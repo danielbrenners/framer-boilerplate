@@ -19,7 +19,8 @@ var iPhoneScreen = new Layer({
 // Create a new layer and have it inherit from iPhoneScreen
 // This allows you to set coordinates with respect
 // to the screen of the phone, and not globally
-var blob = new Layer({
+// Layers default to a blue square
+var blueSquare = new Layer({
   superLayer: iPhoneScreen, 
   x: 0,
   y: 0
