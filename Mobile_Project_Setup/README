@@ -1,0 +1,16 @@
+README
+
+Download Framer from here:
+https://github.com/koenbok/Framer
+
+Download gruntfile.js and package.json from here:
+https://gist.github.com/jmwhittaker/8932690
+
+Project
+	app.js
+	index.html
+	gruntfile.js
+	package.json
+	/framer
+	/images
+

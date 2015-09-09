@@ -1,0 +1,173 @@
+// Layers, animation, states, events
+
+
+// Create layer
+var layerA = new Layer({
+	x: 0,
+	y: 0,
+	width: 10,
+	height: 10,
+	borderRadius: 3,
+	backgroundColor: "green",
+})
+
+// Position layer
+layerA.superLayer = layerAlpha;
+layerA.center();
+
+// Animate layer
+layerA.animate({
+	properties: {
+		rotation: 90,
+		opacity: 0.5
+	},
+	curve: "ease",
+	time: 1
+});
+
+// Add states
+layerA.states.add({
+  one: {
+  	html: "<p>This is State 1</p>"
+  },
+  two: {
+  	html: "<p>This is State 2... with style!</p>"
+  	style: {
+  		"outline": "1px solid red",
+  		"padding": "10px"
+  	}
+  }
+});
+
+// Switching states instantly
+layerA.states.switchInstant("one");
+layerA.states.switchInstant.next();
+
+// Switching with animation
+layerA.states.switch("one");
+layerA.states.switch.next();
+
+layerA.states.animationOptions = {curve: "spring(600,30,0)"};
+
+
+// Listen to events
+layerA.on(Events.Click, function () {
+  layerA.states.next();
+});
+
+
+// Chaining animations with events
+layerA.on(Events.AnimationEnd, function () {
+	layerB.animate({
+		properties: {
+			rotation: 180
+		}
+	});
+});
+
+
+// Create draggable layers
+layerA.draggable.enabled = true;
+layerA.draggable.horizontal = false;
+layerA.draggable.vertical = true;
+
+// Set constraints for dragging layers
+layerA.draggable.constraints = {
+  x:0,
+  y:0,
+  height: 300,
+  width: 300
+}
+
+
+// Listen to drag events
+layerA.on(Events.DragStart, function () {
+  ...
+});
+
+layerA.on(Events.DragMove, function () {
+  ...
+});
+
+layerA.on(Events.DragEnd, function () {
+  ...
+});
+
+
+
+// Scrolling
+
+// Create a scroll container to contain physics and mask the contents
+// You can constrain the movement of the contents within the scroll component
+// You can also define an inset (blank header to let contents breath) with contentInset
+var scroll = new ScrollComponent({
+  width: 120,
+  height: 120,
+  contentInset: {
+    top: 40,
+    bottom: 40,
+    right: 0,
+    left: 0
+  }
+  scrollHorizontal: false,
+  scrollVertical: true
+});
+
+// Create each element to be scrolled (just two here)
+
+var firstElement = new Layer({
+  superLayer: scroll.content,
+  width: 120,
+  height: 20
+});
+
+var SecondElement = new Layer({
+  superLayer: scroll.content,
+  width: 120,
+  height: 20
+  y: 60
+});
+
+// Scrolls have three events: ScrollStart, ScrollMove, ScrollEnd
+
+
+// Pages
+
+// Create PageComponent, based on ScrollComponent
+
+var page = new PageComponent({
+  width: 120,
+  height: 120
+});
+
+// Create page layers
+
+var pageA = new Layer({
+  
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
